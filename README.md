@@ -36,6 +36,7 @@ python validate.py
 
 - **Docker Desktop** - For MySQL database container
 - **Python 3.8+** - For ETL scripts
+- **VS Code** - Code Editor
 - **Git** - Optional, for cloning repository
 
 ### System Requirements
