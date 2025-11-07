@@ -287,7 +287,3 @@ All steps are fully reproducible:
 - Source JSON file included in repository
 
 ---
-
-## License
-
-This solution is provided for assessment purposes only.
