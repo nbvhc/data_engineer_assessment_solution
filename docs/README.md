@@ -89,13 +89,70 @@ For MySQL Docker image reference:
 
 ## Solutions and Instructions (Filed by Candidate)
 
-**Document your database design and solution here:**
+**Please see the main README.md file in the root directory for complete solution documentation, including:**
 
-- Explain your schema and any design decisions
-- Give clear instructions on how to run and test your script
+- Detailed database schema design and normalization approach
+- Step-by-step setup instructions
+- ETL pipeline execution guide
+- Validation and testing procedures
+- Troubleshooting guide
 
-**Document your ETL logic here:**
+**Quick Start:**
 
-- Outline your approach and design
-- Provide instructions and code snippets for running the ETL
-- List any requirements
+1. **Start MySQL Database:**
+   ```bash
+   docker-compose -f docker-compose.initial.yml up --build -d
+   ```
+
+2. **Setup Python Environment:**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```env
+   MYSQL_HOST=localhost
+   MYSQL_PORT=3306
+   MYSQL_DB=home_db
+   MYSQL_USER=db_user
+   MYSQL_PASSWORD=6equj5_db_user
+   ```
+
+4. **Run ETL Pipeline:**
+   ```bash
+   cd scripts
+   python etl.py
+   ```
+
+**Database Design Summary:**
+
+The solution implements a **star schema** (dimensional model) with:
+
+- **Dimension Tables**: `dim_property`, `dim_address`, `dim_hoa`, `dim_valuation`, `dim_rehab`, `dim_tax`
+- **Fact Table**: `fact_property_snapshot` (links all dimensions)
+- **Staging Table**: `stg_properties_raw` (stores raw JSON for audit)
+
+**ETL Logic Summary:**
+
+1. **Extract**: Reads JSON file and stages raw data
+2. **Transform**: 
+   - Normalizes property attributes
+   - Aggregates HOA, Valuation, and Rehab arrays
+   - Creates business keys for deduplication
+   - Parses and cleans numeric fields
+3. **Load**: 
+   - Upserts dimension tables (with deduplication)
+   - Creates fact table records linking dimensions
+   - Uses transactions for data integrity
+
+**Key Features:**
+- Idempotent loading (can run multiple times safely)
+- Comprehensive error handling with rollback
+- Progress tracking during processing
+- Data quality validation
+- Full audit trail via staging table
+
+For complete details, see the main **README.md** file.

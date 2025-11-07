@@ -1,5 +1,6 @@
 # Use the official MySQL image from the Docker Hub
-FROM mysql:8.0
+FROM public.ecr.aws/docker/library/mysql:8.0
+
 
 # Set environment variables
 ENV MYSQL_ROOT_PASSWORD=6equj5_root

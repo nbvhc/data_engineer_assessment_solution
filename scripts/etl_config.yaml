@@ -1,0 +1,41 @@
+keys:
+  
+  business_key: ""
+  bk_fallback:
+    - "Street_Address"
+    - "City"
+    - "State"
+    - "Zip"
+
+mappings:
+  property:
+    year_built: "Year_Built"
+    property_type: "Property_Type"
+    square_feet: "SQFT_Total"   
+    bedrooms: "Bed"
+    bathrooms: "Bath"
+    lot_size_sqft: ""           
+
+  address:
+    address_line1: "Street_Address"
+    address_line2: ""          
+    city: "City"
+    state: "State"
+    postal_code: "Zip"
+    county: ""                  
+    country: ""                 
+    latitude: "Latitude"
+    longitude: "Longitude"
+
+
+  hoa: {}
+  valuation: {}
+  rehab: {}
+
+  tax:
+    tax_year: ""               
+    assessed_value: ""          
+    tax_amount: "Taxes"         
+
+defaults:
+  country: "USA"
