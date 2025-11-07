@@ -1,14 +1,8 @@
 # Use the official MySQL image from the Docker Hub
 FROM public.ecr.aws/docker/library/mysql:8.0
 
-
-# Set environment variables
-ENV MYSQL_ROOT_PASSWORD=6equj5_root
-ENV MYSQL_USER=db_user
-ENV MYSQL_DATABASE=home_db
-ENV MYSQL_PASSWORD=6equj5_db_user
-
-
+# Environment variables are set via docker-compose.initial.yml
+# Do not hardcode passwords in Dockerfile
 
 # Expose port 3306 for MySQL
 EXPOSE 3306

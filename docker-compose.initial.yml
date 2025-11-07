@@ -5,10 +5,10 @@ services:
       dockerfile: Dockerfile.initial_db
     container_name: mysql_ctn
     environment:
-      MYSQL_ROOT_PASSWORD: 6equj5_root
-      MYSQL_DATABASE: home_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: 6equj5_db_user
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme_root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-home_db}
+      MYSQL_USER: ${MYSQL_USER:-db_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme_db_password}
     volumes:
       - mysql_vol:/var/lib/mysql:rw
     ports:
